@@ -1,0 +1,19 @@
+﻿<Project> 
+  <!-- The dotnet CLI build on a Windows machine will run on a .NET Core/5/6/7 runtime that is also capable of loading net462 assemblies.
+       But, since the net462 was not compiled against a .NET Core/5/6/7 target, it may fail with method binding errors.
+       To make this compile-time safe, we need to load the net462 only when MSBuild is running on a .NET Framework runtime, e. g. in VS.
+       
+       The other way around, in Windows VS 2022 17.4.3 the runtime seems to be able to load netstandard2.0 assemblies.
+       So, why not always use the netstandard2.0 assembly?
+       Because users could have an old VS or BuildTools version installed that runs MSBuild (< 15.4 it seems) on a runtime that does not
+       support netstandard2.0. -->
+  <!-- Note that MSBuildThisFileDirectory at build time refers to the "build" folder within the nuget package -->
+  <!-- see also https://natemcmaster.com/blog/2017/07/05/msbuild-task-in-nuget/ -->
+  <PropertyGroup>
+    <TfmTaskFolder Condition="'$(MSBuildRuntimeType)' == 'Core'">netstandard2.0</TfmTaskFolder>
+    <!-- this includes an empty MSBuildRuntimeType as can happen with old MSBuild version that do not know .NET Core yet and do not set the property at all. -->
+    <TfmTaskFolder Condition="'$(MSBuildRuntimeType)' != 'Core'">net462</TfmTaskFolder>
+  </PropertyGroup>
+  <UsingTask TaskName="CheckAssemblyReferenceVersionConflicts"
+             AssemblyFile="$(MSBuildThisFileDirectory)../tasks/$(TfmTaskFolder)/SvSoft.MSBuild.MultiAssemblyPackageCheck.dll" />
+</Project>

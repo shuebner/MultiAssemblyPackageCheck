@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checker", "Checker\Checker.csproj", "{946123AB-9CB1-4F26-8AEC-B994D2A010B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98D37A48-750E-4DB1-B06E-83AAFA038A85}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checker.Tests.net48", "Checker.Tests.net48\Checker.Tests.net48.csproj", "{B0E83CD0-B470-4CE7-B9A2-5D38E6EE5EC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{28A510AD-AA59-482F-8F8B-5699757DC435}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checker.MSBuild", "Checker.MSBuild\Checker.MSBuild.csproj", "{7A7EFD40-3B42-43C9-AD5A-87A843A7C017}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net48", "net48", "{41D4B5DA-35AA-43A2-81FE-391E0C8DEA19}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagedProject1", "Sample\net48\PackagedProject1\PackagedProject1.csproj", "{B1493752-5BD9-4C54-ACE7-8FD0713BF641}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagedProject2", "Sample\net48\PackagedProject2\PackagedProject2.csproj", "{B0B5B572-4813-4E28-9F40-0CBA6AD9A4EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "net6", "net6", "{0AE39B3A-AE06-4FFB-954E-5DC3900E2F90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagedProject1", "Sample\net6\PackagedProject1\PackagedProject1.csproj", "{355AEC54-D868-4D09-8747-B99102392366}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagedProject2", "Sample\net6\PackagedProject2\PackagedProject2.csproj", "{3A6DBE66-E124-4C67-A7FF-9DCF9F72F567}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checker.Tests.net60", "Checker.Tests.net60\Checker.Tests.net60.csproj", "{C8AC4FBF-1579-417F-94EB-BA43AD1986AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{946123AB-9CB1-4F26-8AEC-B994D2A010B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946123AB-9CB1-4F26-8AEC-B994D2A010B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946123AB-9CB1-4F26-8AEC-B994D2A010B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946123AB-9CB1-4F26-8AEC-B994D2A010B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E83CD0-B470-4CE7-B9A2-5D38E6EE5EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E83CD0-B470-4CE7-B9A2-5D38E6EE5EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E83CD0-B470-4CE7-B9A2-5D38E6EE5EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E83CD0-B470-4CE7-B9A2-5D38E6EE5EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7EFD40-3B42-43C9-AD5A-87A843A7C017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7EFD40-3B42-43C9-AD5A-87A843A7C017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7EFD40-3B42-43C9-AD5A-87A843A7C017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7EFD40-3B42-43C9-AD5A-87A843A7C017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1493752-5BD9-4C54-ACE7-8FD0713BF641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1493752-5BD9-4C54-ACE7-8FD0713BF641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1493752-5BD9-4C54-ACE7-8FD0713BF641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1493752-5BD9-4C54-ACE7-8FD0713BF641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B5B572-4813-4E28-9F40-0CBA6AD9A4EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B5B572-4813-4E28-9F40-0CBA6AD9A4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B5B572-4813-4E28-9F40-0CBA6AD9A4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B5B572-4813-4E28-9F40-0CBA6AD9A4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355AEC54-D868-4D09-8747-B99102392366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355AEC54-D868-4D09-8747-B99102392366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355AEC54-D868-4D09-8747-B99102392366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355AEC54-D868-4D09-8747-B99102392366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6DBE66-E124-4C67-A7FF-9DCF9F72F567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6DBE66-E124-4C67-A7FF-9DCF9F72F567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6DBE66-E124-4C67-A7FF-9DCF9F72F567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6DBE66-E124-4C67-A7FF-9DCF9F72F567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8AC4FBF-1579-417F-94EB-BA43AD1986AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8AC4FBF-1579-417F-94EB-BA43AD1986AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8AC4FBF-1579-417F-94EB-BA43AD1986AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8AC4FBF-1579-417F-94EB-BA43AD1986AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{41D4B5DA-35AA-43A2-81FE-391E0C8DEA19} = {28A510AD-AA59-482F-8F8B-5699757DC435}
+		{B1493752-5BD9-4C54-ACE7-8FD0713BF641} = {41D4B5DA-35AA-43A2-81FE-391E0C8DEA19}
+		{B0B5B572-4813-4E28-9F40-0CBA6AD9A4EF} = {41D4B5DA-35AA-43A2-81FE-391E0C8DEA19}
+		{0AE39B3A-AE06-4FFB-954E-5DC3900E2F90} = {28A510AD-AA59-482F-8F8B-5699757DC435}
+		{355AEC54-D868-4D09-8747-B99102392366} = {0AE39B3A-AE06-4FFB-954E-5DC3900E2F90}
+		{3A6DBE66-E124-4C67-A7FF-9DCF9F72F567} = {0AE39B3A-AE06-4FFB-954E-5DC3900E2F90}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C41DAD25-ABD0-4A35-B341-A0F0B8ACA30C}
+	EndGlobalSection
+EndGlobal

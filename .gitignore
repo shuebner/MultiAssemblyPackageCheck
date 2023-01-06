@@ -184,6 +184,9 @@ PublishScripts/
 
 # NuGet Packages
 *.nupkg
+# except for the two sample packages on which the tests rely
+!Sample/net48/*.nupkg
+!Sample/net6/*.nupkg
 # NuGet Symbol Packages
 *.snupkg
 # The packages folder can be ignored because of Package Restore
