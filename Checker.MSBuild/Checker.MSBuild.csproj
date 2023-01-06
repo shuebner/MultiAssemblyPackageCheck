@@ -13,7 +13,7 @@
     <AssemblyName>SvSoft.MSBuild.MultiAssemblyPackageCheck</AssemblyName>
     <PackageId>SvSoft.MSBuild.MultiAssemblyPackageCheck</PackageId>
     <__TimeStamp>$([System.DateTimeOffset]::Now.ToString('yyyy-MM-dd-HH-mm'))</__TimeStamp>
-    <PackageVersion>0.0.1-rc.$(__TimeStamp)</PackageVersion>
+    <Version>0.0.1-rc.$(__TimeStamp)</Version>
 
     <!-- There is no nuget-defined directory for Task dlls, so we make up our own.
          The important thing is that the task assembly does not end up in 'lib', 
