@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>10</LangVersion>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+
+    <RootNamespace>SvSoft.MSBuild.MultiAssemblyPackageCheck</RootNamespace>
+  </PropertyGroup>
+</Project>

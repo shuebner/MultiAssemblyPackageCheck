@@ -1,0 +1,20 @@
+﻿<Project>
+  <Target Name="__GetPackagePath">
+    <ItemGroup>
+      <!-- _OutputPackItems contains the nupkg, nuspec and possibly other files.
+           The regular expression is expected to match exactly one file -->
+      <__PackagePaths Include="@(_OutputPackItems)"
+                         Condition="$([System.Text.RegularExpressions.Regex]::IsMatch(%(Identity), ':*\.nupkg$'))" />
+    </ItemGroup>
+    <PropertyGroup>
+      <!-- We expect at most one element -->
+      <__PackagePath>@(__PackagePaths)</__PackagePath>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="__CheckPackage" AfterTargets="Pack" DependsOnTargets="__GetPackagePath">
+    <Message Importance="high" Text="Checking package $(__PackagePath)..." />
+    <CheckAssemblyReferenceVersionConflicts PackagePath="$(__PackagePath)"
+                                            IgnoredAssemblyNames="@(ARVCC_IgnoredAssemblyNames)" />
+  </Target>
+</Project>

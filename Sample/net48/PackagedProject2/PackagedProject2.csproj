@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PackagedProject1\PackagedProject1.csproj" PrivateAssets="all" IncludeInPackage="true" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);__IncludeProjectReferences</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <Target Name="__IncludeProjectReferences" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('IncludeInPackage', 'true'))" />
+    </ItemGroup>
+  </Target>
+
+  <ItemGroup>
+    <!-- include transitive dependency from Project1 since it is not
+         automatically included because of PrivateAssets="all" -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+  </ItemGroup>
+
+
+  <PropertyGroup>
+    <RestoreAdditionalProjectSources>../../../Checker.MSBuild/bin/Debug</RestoreAdditionalProjectSources>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SvSoft.MSBuild.MultiAssemblyPackageCheck" Version="0.0.*-*" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,65 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- The task assembly needs to be loadable by both the .NET Core MSBuild employed by dotnet CLI and
+         the Full Framework MSBuild employed by VS.
+         The Full Framework MSBuild may run on an old .NET Framework runtime that cannot load netstandard2.0 libraries.
+         MSBuild seems to support netstandard2.0 in version 15.4 or above.
+         Thus, the package needs to multitarget in order to support both dotnet CLI and VS.
+         see https://github.com/dotnet/msbuild/issues/4198#issuecomment-468045508 -->
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+
+    <RootNamespace>SvSoft.MSBuild.MultiAssemblyPackageCheck</RootNamespace>
+    <AssemblyName>SvSoft.MSBuild.MultiAssemblyPackageCheck</AssemblyName>
+    <PackageId>SvSoft.MSBuild.MultiAssemblyPackageCheck</PackageId>
+    <__TimeStamp>$([System.DateTimeOffset]::Now.ToString('yyyy-MM-dd-HH-mm'))</__TimeStamp>
+    <PackageVersion>0.0.1-rc.$(__TimeStamp)</PackageVersion>
+
+    <!-- There is no nuget-defined directory for Task dlls, so we make up our own.
+         The important thing is that the task assembly does not end up in 'lib', 
+         because it is not a runtime dependency. -->
+    <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+    <!-- Squelch warning about dlls outside of the 'lib' folder (NU5100) -->
+    <!-- Squelch warning about dependency group for TFM without 'lib' content (NU5128) -->
+    <NoWarn>$(NoWarn);NU5100;NU5128</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../Checker/*.cs" LinkBase="Checker" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Utilities.Core" />
+    <PackageReference Include="System.Reflection.MetadataLoadContext" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Do not declare package dependencies in the nuget package.
+         Dependencies fall into two categories:
+         1. dependencies that we expect will be available in the runtime environment anyway
+            (both .NET Framework MSBuild and .NET Core MSBuild)
+         2. dependencies whose assemblies we manually include in our nuget package.  -->
+    <PackageReference Update="@(PackageReference)" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <!-- Force copying of assembly dependencies to the output folder when building target 'Build'.
+       This is only relevant for non-.NET-Framework targets, since .NET Framework targets copy
+       them anyway. -->
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);__IncludeDependencyAssemblies</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+  
+  <Target Name="__IncludeDependencyAssemblies">
+    <ItemGroup>
+      <BuildOutputInPackage Include="$(OutDir)System.Reflection.MetadataLoadContext.dll" />
+      <BuildOutputInPackage Include="$(OutDir)System.Reflection.Metadata.dll" />
+    </ItemGroup>
+  </Target>
+  
+  <ItemGroup>
+    <Content Include="build/Task.props" PackagePath="build/$(PackageId).props" />
+    <Content Include="build/Task.targets" PackagePath="build/$(PackageId).targets" />
+  </ItemGroup>
+
+</Project>
