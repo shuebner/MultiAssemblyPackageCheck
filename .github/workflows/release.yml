@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    # we build with net462 TFM
+    runs-on: windows-latest
+
+    steps:
+    - name: get version number
+      id: get_version
+      # "ref/tags/v" has 11 characters
+      run: |
+        $version = $env:GITHUB_REF.Substring(11)
+        echo "::set-output name=version::$version"
+
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Build package
+      run: dotnet pack Checker.MSBuild -c Release -p:Version=${{ steps.get_version.outputs.version }} -o _package
+
+    - name: Publish package
+      run: dotnet nuget push -k ${{ secrets.NUGET_API_KEY }} _package/*.${{ steps.get_version.outputs.version }}.nupkg -s https://api.nuget.org/v3/index.json
