@@ -23,8 +23,6 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
 
     - name: Build package
       run: dotnet pack Checker.MSBuild -c Release -p:Version=${{ steps.get_version.outputs.version }} -o _package
