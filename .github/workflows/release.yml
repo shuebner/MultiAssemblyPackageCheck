@@ -16,7 +16,7 @@ jobs:
       id: get_version
       # "refs/tags/v" has 11 characters
       run: |
-        $version = $env:GITHUB_REF.Substring(11)
+        $version = "1.0.0-rc.10"
         echo "version=${version}" >> $GITHUB_OUTPUT
 
     - uses: actions/checkout@v3
