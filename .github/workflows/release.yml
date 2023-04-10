@@ -28,4 +28,4 @@ jobs:
       run: dotnet pack Checker.MSBuild -c Release -p:Version=${{ steps.get_version.outputs.version }} -o _package
 
     - name: Publish package
-      run: dotnet nuget push -k ${{ secrets.NUGET_API_KEY }} _package/*.${{ steps.get_version.outputs.version }}.nupkg -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push -k ${{ secrets.NUGET_API_KEY }} _package\*.${{ steps.get_version.outputs.version }}.nupkg -s https://api.nuget.org/v3/index.json
