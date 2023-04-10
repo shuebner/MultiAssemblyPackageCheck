@@ -4,7 +4,7 @@
     <!-- The task assembly needs to be loadable by both the .NET Core MSBuild employed by dotnet CLI and
          the Full Framework MSBuild employed by VS.
          The Full Framework MSBuild may run on an old .NET Framework runtime that cannot load netstandard2.0 libraries.
-         MSBuild seems to support netstandard2.0 in version 15.4 or above.
+         MSBuild seems to support netstandard2.0 in version 15.4 or above only.
          Thus, the package needs to multitarget in order to support both dotnet CLI and VS.
          see https://github.com/dotnet/msbuild/issues/4198#issuecomment-468045508 -->
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
@@ -38,7 +38,7 @@
          Dependencies fall into two categories:
          1. dependencies that we expect will be available in the runtime environment anyway
             (both .NET Framework MSBuild and .NET Core MSBuild)
-         2. dependencies whose assemblies we manually include in our nuget package.  -->
+         2. dependencies whose assemblies we manually include in our nuget package. -->
     <PackageReference Update="@(PackageReference)" PrivateAssets="all" />
   </ItemGroup>
   
