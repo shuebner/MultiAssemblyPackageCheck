@@ -14,10 +14,10 @@ jobs:
     steps:
     - name: get version number
       id: get_version
-      # "ref/tags/v" has 11 characters
+      # "refs/tags/v" has 11 characters
       run: |
         $version = $env:GITHUB_REF.Substring(11)
-        echo "version=$version" >> $GITHUB_OUTPUT
+        echo "version=${version}" >> $GITHUB_OUTPUT
 
     - uses: actions/checkout@v3
 
